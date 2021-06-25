@@ -18,18 +18,21 @@
 import { mapActions, mapGetters } from 'vuex'
  
 export default {
+    props: ["currentItem"],
     data () {
       return {
-          selected: ""
+          selected: []
       }
     },
 
     watch: {
-     selected (selected){
-    this.$emit("changeType", selected)
-     }
+
+      selected(selected) {
+      this.$emit('changeType', selected)
+      },
      
     },
+
  computed: {
    ...mapGetters([
      'getCategoryList'
@@ -44,6 +47,10 @@ export default {
    if (!this.getCategoryList.length) {
      this.loadCategories()
    }
+
+        if (this.selected !== this.currentItem){
+          this.selected = this.currentItem;
+        }
  }
 }
 </script>

@@ -56,7 +56,9 @@
     },
 
     mounted() {
-    this.$emit('updateDate', this.dateFormatted)
+        if (this.datePicked){
+          this.date = this.datePicked
+          }
     },
 
     watch: {
@@ -64,11 +66,17 @@
         this.dateFormatted = this.formatDate(date)
       },
 
-        dateFormatted (dateFormatted) {
+      dateFormatted (dateFormatted) {
+          if(dateFormatted !== this.datePicked){
             this.$emit('updateDate', dateFormatted)
-          },
+          }},
 
-        },
+      datePicked (datePicked) {
+        if (this.dateFormatted !== datePicked){
+          this.date = this.datePicked;
+      }}
+
+    },
 
     methods: {
 
@@ -76,14 +84,15 @@
         if (!date) return null
 
         const [year, month, day] = date.split('-')
-        return `${day}.${month}.${year}`
+        return `${month}/${day}/${year}`
       },
       parseDate (date) {
         if (!date) return null
 
-        const [year, month, day] = date.split('.')
+        const [month, day, year] = date.split('/')
         return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
       },
+
     },
   }
 </script>

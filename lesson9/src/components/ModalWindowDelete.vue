@@ -16,7 +16,7 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn color="blue darken-1" text @click="dialogDelete = !dialogDelete">Cancel</v-btn>
-              <v-btn color="blue darken-1" text @click="deleteItemConfirm(itemIdx)">OK</v-btn>
+              <v-btn color="blue darken-1" text @click="deleteItemConfirm(itemId)">OK</v-btn>
               <v-spacer></v-spacer>
             </v-card-actions>
           </v-card>
@@ -29,7 +29,7 @@
 
 
   export default {
-    props: ["itemIdx"],
+    props: ["itemId"],
     data() {
       return {
         dialogDelete: false,
@@ -41,10 +41,10 @@
       'deleteFromPaymentsList',
     ]),
 
-      deleteItemConfirm (idx) {
-      console.log(idx)
-      // this.deleteFromPaymentsList(id)
-      // this.dialogDelete = false
+      deleteItemConfirm (id) {
+      console.log(id)
+      this.deleteFromPaymentsList(id)
+      this.dialogDelete = false
     },
 
   }};

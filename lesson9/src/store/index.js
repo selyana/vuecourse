@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     categoryList: [],
     paymentsList: [],
+    itemToEdit: [],
   },
   mutations: {
     setPaymentsListData (state, payload) {
@@ -16,11 +17,14 @@ export default new Vuex.Store({
     state.paymentsList = [...state.paymentsList, payload]
   },
     deleteFromPaymentsList (state, payload) {
-      console.log(payload)
-      console.log(state.paymentsList)
-      state.paymentsList = state.paymentsList.splice(payload, 1)
-      console.log(state.paymentsList)
+    const i = state.paymentsList.map(item => item.id).indexOf(payload);
+    state.paymentsList.splice(i, 1);
   },
+    editItem (state, payload) {    
+    state.paymentsList[payload.id] = payload
+    console.log(state.paymentsList)
+
+},
 
   setCategories (state, payload) { 
     if (!Array.isArray(payload)) {
@@ -38,19 +42,19 @@ export default new Vuex.Store({
          setTimeout(() => {
            resolve([
              {
-               date: '28.03.2020',
+               date: '28/03/2020',
                category: 'Food',
                value: 169,
                id: 0,
              },
              {
-               date: '24.03.2020',
+               date: '24/03/2020',
                category: 'Transport',
                value: 360,
                id: 1,
              },
              {
-               date: '24.03.2020',
+               date: '24/03/2020',
                category: 'Sports',
                value: 532,
                id: 2,

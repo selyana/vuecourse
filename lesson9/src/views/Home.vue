@@ -45,19 +45,19 @@
   fetchData () {
     return [
       {
-        date: '28.03.2020',
+        date: '2020-09-08',
         category: 'Food',
         value: 169,
         id: 0
       },
       {
-        date: '24.03.2020',
+        date: '2020-08-21',
         category: 'Transport',
         value: 360,
         id: 1
       },
       {
-        date: '24.03.2020',
+        date: '2020-01-14',
         category: 'Sports',
         value: 532,
         id: 2

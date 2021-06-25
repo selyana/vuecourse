@@ -12,18 +12,12 @@
     width="300px"
   
   >
-    <template v-slot:[`item.actions`]="{ item, idx }">
-    <v-btn
-        icon>
-      <v-icon
-        small
-      >
-      mdi-pencil
-      
-      </v-icon>
-    </v-btn>
+    <template v-slot:[`item.actions`]="{ item }">
+    <ModalWindowEdit
+    :item="item">
+    </ModalWindowEdit>
     <ModalWindowDelete
-    :itemIdx="idx">
+    :itemId="item.id">
     </ModalWindowDelete>
     </template>
   </v-data-table>
@@ -37,10 +31,10 @@
 <script>
   import { mapGetters } from 'vuex'
   import ModalWindowDelete from './ModalWindowDelete'
-
+  import ModalWindowEdit from './ModalWindowEdit'
 
   export default {
-    components: {ModalWindowDelete},
+    components: {ModalWindowDelete, ModalWindowEdit},
     props: [],
     data () {
       return {
@@ -63,13 +57,6 @@
     ]),
 
   },
-
-    //   methods: {
-    //   showDeletePopUp (id) {
-    //       this.itemID = id;
-    //       this.dialogDelete = !this.dialogDelete
-    //   },
-    // },
 
   }
 </script>
