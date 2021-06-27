@@ -42,7 +42,6 @@
     ]),
 
       deleteItemConfirm (id) {
-      console.log(id)
       this.deleteFromPaymentsList(id)
       this.dialogDelete = false
     },

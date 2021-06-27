@@ -59,12 +59,6 @@
       }
     },
 
-    mounted(){
-    },
-
-    watch: {
-    },
-
 
     methods: {
     ...mapMutations([

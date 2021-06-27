@@ -8,6 +8,23 @@ export default new Vuex.Store({
     categoryList: [],
     paymentsList: [],
     itemToEdit: [],
+    popularCosts: [
+      {
+        category: "Food",
+        value: 50,
+        id: 3
+      },
+      {
+        category: "Transport",
+        value: 20, 
+        id: 4
+      },
+      {
+        category: "Drinks",
+        value: 200, 
+        id: 5
+      }
+    ]
   },
   mutations: {
     setPaymentsListData (state, payload) {
@@ -87,6 +104,11 @@ export default new Vuex.Store({
   },
 
   getters: {
+
+  getPopularExpenses: (state) => {
+      return state.popularCosts;
+    }, 
+
   getCategoryList: state => state.categoryList,
 
   // получаем список paymentsList

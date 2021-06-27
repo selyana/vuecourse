@@ -3,6 +3,8 @@
     <header>
       <h1 class="ma-4">My personal costs</h1>
     </header>
+     <AddPopularExpense>
+    </AddPopularExpense>
     <main>
     <AddPaymentPopUp>
     </AddPaymentPopUp>
@@ -14,6 +16,7 @@
 <script>
   import AddPaymentPopUp from '../components/AddPaymentPopUp'
   import PaymentsTable from '../components/PaymentsTable'
+  import AddPopularExpense from '../components/AddPopularExpense'
 
   import { mapMutations } from 'vuex'
 
@@ -23,6 +26,7 @@
     components: {
       PaymentsTable,
       AddPaymentPopUp,
+      AddPopularExpense
     },
     data(){
        return {

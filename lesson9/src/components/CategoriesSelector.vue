@@ -27,6 +27,10 @@ export default {
 
     watch: {
 
+      currentItem(currentItem) {
+          this.selected = currentItem;
+      },
+
       selected(selected) {
       this.$emit('changeType', selected)
       },
@@ -49,8 +53,11 @@ export default {
    }
 
         if (this.selected !== this.currentItem){
+          console.log(this.currentItem)
           this.selected = this.currentItem;
         }
+
+
  }
 }
 </script>

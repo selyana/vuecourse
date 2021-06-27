@@ -1,14 +1,17 @@
 <template v-slot:top>
 <div>
-            <v-btn
-              x-large
-              color="primary"
-              dark
-              class="ma-4"
-              @click="formShown = true"
-            >
-              Add a new payment
-            </v-btn>
+    <div class="ma-5">
+      <h2>Popular expenses</h2>
+      <v-btn
+      outlined
+      color="primary"
+      @click="editExpense"        
+      class="ma-2"
+      v-for="({category, value}, i) in getPopularExpenses"
+      :key="i"
+      :to="`/add/payment/${category}?value=${value}`">
+      {{category}} {{value}}$</v-btn>
+    </div>
         <v-dialog v-model="formShown" max-width="500px">
           <v-card>
             <v-card-title class="headline">Добавить запись</v-card-title>
@@ -24,7 +27,7 @@
       single-line
       v-model="amount" 
       append-icon="mdi-currency-usd"></v-text-field>
-      <CategoriesSelector @changeType="changeType"></CategoriesSelector>
+      <CategoriesSelector :currentItem="type" @changeType="changeType"></CategoriesSelector>
       <datePicker
       @updateDate="updateDate"
       ></datePicker>
@@ -40,7 +43,7 @@
 <script>
 import CategoriesSelector from '../components/CategoriesSelector'
 import datePicker from '../components/datePicker'
-
+import { mapGetters } from 'vuex'
 import { mapMutations } from 'vuex'
 
 
@@ -61,6 +64,9 @@ import { mapMutations } from 'vuex'
 
      computed: {
 
+ ...mapGetters(['getPopularExpenses']),
+
+
 
     getCurrentDate () {
       const today = new Date();
@@ -73,6 +79,17 @@ import { mapMutations } from 'vuex'
 
 
    methods: { 
+
+         editExpense() {
+          this.formShown = true
+          let getURL = document.location.search
+          let searchValue = new URLSearchParams(getURL)
+          let getValue = searchValue.get("value")
+          this.amount = getValue
+          console.log(this.$route.params.category)
+          this.type = this.$route.params.category
+
+  },
 
       updateDate(dateFormatted){
         this.date = dateFormatted
