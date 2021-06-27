@@ -2,8 +2,8 @@
 <div>
 
   <v-data-table
-    :headers="headers"
-    :items="getPaymentsList"
+    :headers.sync="headers"
+    :items.sync="getPaymentsList"
     :items-per-page="itemsPerPage"
     hide-default-footer
     :page.sync="page"

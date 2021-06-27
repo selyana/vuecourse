@@ -86,7 +86,6 @@ import { mapMutations } from 'vuex'
           let searchValue = new URLSearchParams(getURL)
           let getValue = searchValue.get("value")
           this.amount = getValue
-          console.log(this.$route.params.category)
           this.type = this.$route.params.category
 
   },

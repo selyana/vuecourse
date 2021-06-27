@@ -39,8 +39,6 @@ export default new Vuex.Store({
   },
     editItem (state, payload) {    
     state.paymentsList[payload.id] = payload
-    console.log(state.paymentsList)
-
 },
 
   setCategories (state, payload) { 
@@ -100,8 +98,6 @@ export default new Vuex.Store({
    
 
   },
-  modules: {
-  },
 
   getters: {
 
@@ -112,7 +108,9 @@ export default new Vuex.Store({
   getCategoryList: state => state.categoryList,
 
   // получаем список paymentsList
-  getPaymentsList: state => state.paymentsList,
+  getPaymentsList: (state) => {
+    return state.paymentsList;
+  }, 
  
   // получаем суммарную стоимость всех платежей
   getFullPaymentValue: state => {

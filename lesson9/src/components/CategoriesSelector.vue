@@ -53,7 +53,6 @@ export default {
    }
 
         if (this.selected !== this.currentItem){
-          console.log(this.currentItem)
           this.selected = this.currentItem;
         }
 
